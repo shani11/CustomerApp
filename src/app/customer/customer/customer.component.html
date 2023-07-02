@@ -5,6 +5,43 @@
     <title>Document</title>
 </head>
 <body>
-    {{welcomeMessage}}
+    <b>{{welcomeMessage}}</b><br><br>
+    <form>
+        <div class="mb-3">
+          <label for="customerId" class="form-label"><b>Id</b></label>
+          <input [(ngModel)]="CustomerModel.id" type="number" name="id" class="form-control" id="customerId">
+        </div>
+        <div class="mb-3">
+          <label for="customerName" class="form-label"><b>Name</b></label>
+          <input [(ngModel)]="CustomerModel.name" name="Name" type="text" class="form-control" id="customerName">
+        </div>
+        <div class="mb-3">
+            <label for="customerCity" class="form-label"><b>City</b></label>
+            <input [(ngModel)]="CustomerModel.city" name="city" type="text" class="form-control" id="customerCity">
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="addCustomer()">Add</button>
+      </form>
+    <br>&nbsp;&nbsp;&nbsp;
+    <b>Customers</b><br><br>
+    <div>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">City</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor = "let customer of customers;let i = index">
+                <th scope="row">{{i+1}}</th>
+                <td>{{customer.id}}</td>
+                <td>{{customer.name}}</td>
+                <td>{{customer.city}}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
 </body>
 </html>
